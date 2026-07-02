@@ -1,13 +1,6 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        ans = 0
-        
-        
-        for _ in range(32):
-            last_bit = n & 1
-            ans = ans << 1
-            ans = ans | last_bit
-            n = n >> 1
-        
-        
-        return ans
+        for i in range(16):
+            if (n >> (31-i)) & 1 != (n >> i) & 1: 
+                n ^= 1 << (31-i) | 1 << i
+        return n
